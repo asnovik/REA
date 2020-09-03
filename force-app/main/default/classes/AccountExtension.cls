@@ -1,5 +1,4 @@
 public with sharing class AccountExtension {
-    //test git
     public Account acc {get; set;}
     
     public AccountExtension(ApexPages.StandardController controller){
