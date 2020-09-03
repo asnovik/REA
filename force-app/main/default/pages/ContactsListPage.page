@@ -1,0 +1,59 @@
+<apex:page standardController="Contact" extensions="ContactsListPageControllerExtension" recordSetVar="contacts" showheader="false" action="{!processRequests}">
+    <apex:include pageName="TemplateREA"/>
+    <apex:form >
+        <apex:pageBlock title="Contacts List" id="contacts_list">
+            <apex:pageBlockSection >
+                    <apex:selectList value="{!filterId }" size="1">
+                        <apex:selectOptions value="{!items }" />
+                        <apex:actionSupport event="onchange" action="{!processRequests}" reRender="contacts_list" />
+                    </apex:selectList>
+                <apex:commandButton action="{!URLFOR($Action.Contact.ContactNew, Contact.Id, null, false)}" id="Button" value="New"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!results}" var="ct">
+                <apex:column headerValue="Contact Name">
+                    <apex:outputLink value="{!URLFOR($Action.Contact.ContactDetailPage, ct.Id, null, false)}">{!ct.name}</apex:outputLink>
+                </apex:column>
+                <!--apex:column value="{!ct.FirstName }"/-->
+                <!--apex:column value="{!ct.LastName }"/-->
+                <!--apex:column value="{!ct.Name }"/-->
+                <apex:column value="{!ct.Account.Name }"/>
+                <apex:column value="{!ct.Phone }"/>
+                <apex:column value="{!ct.Email }"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    Page:
+                    <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }" />
+                </td>
+                <td align="center">
+                    <apex:commandLink action="{! Previous }" value="« Previous" rendered="{! HasPrevious }" />
+                    <apex:outputText style="color: #ccc;" value="« Previous" rendered="{! NOT(HasPrevious) }" /> &nbsp;&nbsp;
+                    <apex:commandLink action="{! Next }" value="Next »" rendered="{! HasNext }" />
+                    <apex:outputText style="color: #ccc;" value="Next »" rendered="{! NOT(HasNext) }" />
+                </td>
+                <td align="right">
+                    Records per page:
+                    <apex:selectList value="{! PageSize }" size="1">
+                        <apex:selectOption itemValue="10" itemLabel="10" />
+                        <apex:selectOption itemValue="15" itemLabel="15" />
+                        <apex:selectOption itemValue="20" itemLabel="20" />
+                        <apex:actionSupport event="onchange" reRender="contacts_list" />
+                    </apex:selectList>
+                </td>
+            </tr>
+        </table>
+    </apex:form>
+    <script type='text/javascript'>
+        window.addEventListener( 'pageshow', function ( event ) {
+        var historyPage = event.persisted ||
+        ( typeof window.performance != 'undefined' &&
+        window.performance.navigation.type === 2 );
+        if ( historyPage ) {
+        // Handle page restore.
+        window.location.reload();
+            }
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,19 @@
+<apex:page standardController="Lead" extensions="LeadExtension"  sidebar="false" showheader="false" >
+    <apex:include pageName="TemplateREA" />
+        <apex:form >
+        <apex:pageBlock title="New Lead" id="lead_new">
+            <apex:pageBlockSection columns="1">
+                <apex:inputText value="{!ld.FirstName}"/>
+                <apex:inputText value="{!ld.LastName}"/>
+                <apex:inputField value="{!ld.Status}"/>
+                <apex:inputField value="{!ld.Rating}"/> 
+                <apex:inputField value="{!ld.Company}"/>
+                <apex:inputField value="{!ld.Phone}"/>
+                <apex:inputField value="{!ld.Email}"/>       
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>  
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

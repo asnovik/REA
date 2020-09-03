@@ -1,0 +1,48 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA" />
+    <apex:form >
+        <apex:pageBlock title="Opportunities List" id="opportunities_list">
+            <apex:pageBlockSection >
+                <apex:selectList value="{! filterId }" size="1">
+                    <apex:selectOptions value="{! listViewOptions }" />
+                    <apex:actionSupport event="onchange" reRender="opportunities_list" />
+                </apex:selectList>
+                <apex:commandButton action="{!URLFOR($Action.Opportunity.OpportunityNew, Opportunity.Id, null, false)}" id="Button" value="New"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!opportunities}" var="ops">
+                <apex:column headerValue="Opportunity Name">
+                    <apex:outputLink value="{!URLFOR($Action.Opportunity.OpportunityDetailPage, ops.Id, null, false)}">{!ops.name}</apex:outputLink>
+                </apex:column>
+                <!--apex:column value="{!ops.name}" /!-->
+                <apex:column value="{!ops.AccountId}" />
+                <apex:column value="{!ops.StageName}" />
+                <apex:column value="{!ops.Type}" />
+                <apex:column value="{!ops.Amount}" />
+                <apex:column value="{!ops.CloseDate}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    Page:
+                    <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }" />
+                </td>
+                <td align="center">
+                    <apex:commandLink action="{! Previous }" value="« Previous" rendered="{! HasPrevious }" />
+                    <apex:outputText style="color: #ccc;" value="« Previous" rendered="{! NOT(HasPrevious) }" /> &nbsp;&nbsp;
+                    <apex:commandLink action="{! Next }" value="Next »" rendered="{! HasNext }" />
+                    <apex:outputText style="color: #ccc;" value="Next »" rendered="{! NOT(HasNext) }" />
+                </td>
+                <td align="right">
+                    Records per page:
+                    <apex:selectList value="{! PageSize }" size="1">
+                        <apex:selectOption itemValue="10" itemLabel="10" />
+                        <apex:selectOption itemValue="15" itemLabel="15" />
+                        <apex:selectOption itemValue="20" itemLabel="20" />
+                        <apex:actionSupport event="onchange" reRender="opportunities_list" />
+                    </apex:selectList>
+                </td>
+            </tr>
+        </table>
+    </apex:form>
+</apex:page>

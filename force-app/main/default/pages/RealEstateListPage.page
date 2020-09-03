@@ -1,0 +1,46 @@
+<apex:page standardController="RealEstate__c" recordSetVar="realEstate" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA" />
+    <apex:form >
+        <apex:pageBlock title="Real Estate List" id="realEstate_list">
+            <apex:pageBlockSection >
+                <apex:selectList value="{! filterId }" size="1">
+                    <apex:selectOptions value="{! listViewOptions }" />
+                    <apex:actionSupport event="onchange" reRender="realEstate_list" />
+                </apex:selectList>
+                <apex:commandButton action="{!URLFOR($Action.RealEstate__c.RealEstateNew, RealEstate__c.Id, null, false)}" id="Button" value="New"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!realEstate}" var="res">
+                <apex:column headerValue="Real Estate Name">
+                    <apex:outputLink value="{!URLFOR($Action.RealEstate__c.RealEstateDetailPage, res.Id, null, false)}">{!res.name}</apex:outputLink>
+                </apex:column>
+                <!--apex:column value="{!res.name}" /!-->
+                <apex:column value="{!res.Price__c}" />
+                <apex:column value="{!res.RealEstateContract__c}" />
+                <apex:column value="{!res.Realtor__c}" />
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    Page:
+                    <apex:outputText value=" {!PageNumber} of {! CEILING(ResultSize / PageSize) }" />
+                </td>
+                <td align="center">
+                    <apex:commandLink action="{! Previous }" value="« Previous" rendered="{! HasPrevious }" />
+                    <apex:outputText style="color: #ccc;" value="« Previous" rendered="{! NOT(HasPrevious) }" /> &nbsp;&nbsp;
+                    <apex:commandLink action="{! Next }" value="Next »" rendered="{! HasNext }" />
+                    <apex:outputText style="color: #ccc;" value="Next »" rendered="{! NOT(HasNext) }" />
+                </td>
+                <td align="right">
+                    Records per page:
+                    <apex:selectList value="{! PageSize }" size="1">
+                        <apex:selectOption itemValue="10" itemLabel="10" />
+                        <apex:selectOption itemValue="15" itemLabel="15" />
+                        <apex:selectOption itemValue="20" itemLabel="20" />
+                        <apex:actionSupport event="onchange" reRender="realEstate_list" />
+                    </apex:selectList>
+                </td>
+            </tr>
+        </table>
+    </apex:form>
+</apex:page>

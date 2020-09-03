@@ -1,0 +1,57 @@
+<apex:page controller="ActivitiesListController" sidebar="false" showheader="false" extensions="PieChartController">
+    <apex:form >
+            <table width="100%" height="200">
+                <tbody>
+                    <tr>
+                        <td width="65%;" style="vertical-align:top">
+                        <apex:pageBlock title="Tasks List" id="tasks_list" >
+                            <apex:pageBlockButtons location="top">
+                                <apex:commandButton action="{!URLFOR($Action.Task.TaskNew, Task.Id, null, false)}" id="Button" value="New"/>
+                            </apex:pageBlockButtons>
+                            <apex:pageBlockTable value="{!tasksList}" var="tsk">
+                                <apex:column headerValue="Task number">
+                                    <apex:outputLink value="{!URLFOR($Action.Task.TaskDetailPage, tsk.Id, null, false)}">{!tsk.WhoId}</apex:outputLink>
+                                </apex:column>
+                            <apex:column value="{!tsk.WhoId}"/>
+                            <apex:column value="{!tsk.AccountId}"/>
+                            <!--apex:column value="{!tsk.Subject}"/-->
+                            <apex:column value="{!tsk.TaskSubject__c}"/>
+                            <apex:column value="{!tsk.CreatedDate}"/>
+                            <apex:column value="{!tsk.Priority}"/>
+                            <apex:column value="{!tsk.Status}"/>
+                         </apex:pageBlockTable>
+                    </apex:pageBlock>
+                    </td>    
+                   <td rowspan="2" width="35%;" style="vertical-align:top;">
+                            <apex:pageBlock title="Tasks Chart" id="tasks_chart">
+                                <apex:chart data="{!TaskData}" height="300" width="400">
+                                    <apex:pieSeries dataField="data"></apex:pieSeries>
+                                </apex:chart>
+                        </apex:pageBlock>
+                    </td>
+                </tr>
+                <tr>
+                   <td width="65%;" style="vertical-align:top;">
+                            <apex:pageBlock title="Events List" id="events_list">
+                                <apex:pageBlockButtons location="top">
+                                    <apex:commandButton action="{!URLFOR($Action.Event.EventNew, Event.Id, null, false)}" id="Button" value="New"/>
+                                </apex:pageBlockButtons>
+                                <apex:pageBlockTable value="{!eventsList}" var="ev">
+                                <apex:column headerValue="Event number">
+                                    <apex:outputLink value="{!URLFOR($Action.Event.EventDetailPage, ev.Id, null, false)}">{!ev.WhoId}</apex:outputLink>
+                                </apex:column>
+                                <apex:column value="{!ev.WhoId}"/>
+                                <apex:column value="{!ev.WhatId}"/>
+                                <apex:column value="{!ev.AccountId}"/>
+                                <!--apex:column value="{!ev.Subject}"/!-->
+                                <apex:column value="{!ev.EventSubject__c}"/>
+                                <apex:column value="{!ev.StartDateTime}"/>
+                                <apex:column value="{!ev.EndDateTime}"/>
+                             </apex:pageBlockTable>
+                        </apex:pageBlock>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page standardController="Task"  sidebar="false" showheader="false" recordSetVar="tasks">
+    <!--apex:include pageName="TemplateREA"/!-->
+        <apex:form >
+            <apex:pageBlock title="Tasks List" id="tasks_list">
+                <apex:pageBlockSection >
+                    <apex:selectList value="{! filterId }" size="1">
+                        <apex:selectOptions value="{! listViewOptions }" />
+                        <apex:actionSupport event="onchange" reRender="tasks_list" />
+                    </apex:selectList>
+                    <apex:commandButton action="{!URLFOR($Action.Task.TaskNew, Task.Id, null, false)}" id="Button" value="New"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockTable value="{!tasks}" var="tsk">
+                    <apex:column headerValue="Task number">
+                        <apex:outputLink value="{!URLFOR($Action.Task.TaskDetailPage, tsk.Id, null, false)}">{!tsk.WhoId}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!tsk.WhoId}"/>
+                    <apex:column value="{!tsk.AccountId}"/>
+                    <!--apex:column value="{!tsk.Subject}"/!-->
+                    <apex:column value="{!tsk.TaskSubject__c}"/>
+                    <apex:column value="{!tsk.CreatedDate}"/>
+                    <apex:column value="{!tsk.Priority}"/>
+                    <apex:column value="{!tsk.Status}"/>
+                 </apex:pageBlockTable>
+            </apex:pageBlock>
+    </apex:form>
+</apex:page>

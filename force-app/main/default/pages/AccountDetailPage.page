@@ -1,0 +1,21 @@
+<apex:page standardController="Account" sidebar="false" showheader="false">
+    <style type="text/css">
+        .actionColumn {display:none; visibility:hidden}
+    </style>
+    <apex:include pageName="TemplateREA" />
+    <!--apex:detail subject="{!Lead.Id}" relatedList="true" title="true"/!-->
+        <apex:form >
+        <apex:pageBlock title="Account Detail" id="account_detail">
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!Account.Name}"/>
+                <apex:outputField value="{!Account.Industry}"/>
+                <apex:outputField value="{!Account.Rating}"/> 
+                <apex:outputField value="{!Account.Phone}"/>
+                <apex:outputField value="{!Account.Type}"/>
+            </apex:pageBlockSection>  
+        </apex:pageBlock>
+    </apex:form>
+    <apex:relatedList list="Real_Estate_Contracts__r" />
+    <apex:relatedList list="Contacts" />
+    <apex:relatedList list="Opportunities" />
+</apex:page>

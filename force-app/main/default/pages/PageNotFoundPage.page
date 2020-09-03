@@ -1,0 +1,22 @@
+<apex:page showHeader="false" title="{!$Label.site.page_not_found}" cache="false">
+      <center>
+        <apex:panelGrid bgcolor="white" columns="1">
+          <apex:panelGrid width="400" cellpadding="30" cellspacing="0" bgcolor="white" columns="1" styleClass="topPanelContainer">
+            <br/>
+            <apex:outputPanel layout="block" styleClass="topPanel">
+              <apex:panelGrid width="350" cellpadding="10" cellspacing="0" bgcolor="white" columns="2">
+                <apex:image url="{!URLFOR($Resource.REA, 'img/logo.png')}"/>
+                <apex:panelGroup >
+                  <apex:outputText style="font-weight:bold; font-size:15px;" value="{!$Label.site.page_not_found_detail}">
+                   <apex:param value="{!$Site.OriginalUrl}"/>
+                  </apex:outputText>
+                  <br/>
+                  <br/>
+                  <apex:outputText value="{!$Label.site.stay_tuned}"/>
+                </apex:panelGroup>
+              </apex:panelGrid>
+             </apex:outputPanel>
+          </apex:panelGrid>
+        </apex:panelGrid>
+      </center>
+</apex:page>

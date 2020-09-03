@@ -1,0 +1,17 @@
+<apex:page standardController="Account" extensions="AccountExtension"  sidebar="false" showheader="false" >
+    <apex:include pageName="TemplateREA" />
+        <apex:form >
+        <apex:pageBlock title="New Account" id="account_new">
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!acc.Name}"/>
+                <apex:inputField value="{!acc.Industry}"/>
+                <apex:inputField value="{!acc.Rating}"/> 
+                <apex:inputField value="{!acc.Phone}"/>
+                <apex:inputField value="{!acc.Type}"/>     
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>  
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

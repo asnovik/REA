@@ -1,0 +1,4 @@
+<apex:page sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA"/>
+    <apex:include pageName="ActivitiesListPage"/> 
+</apex:page>

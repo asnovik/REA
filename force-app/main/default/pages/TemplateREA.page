@@ -1,0 +1,81 @@
+<apex:page showHeader="false" controller="TemplateREAController" standardStylesheets="false">
+
+    <style>
+        .bPageBlock {
+            border: none;
+            background: white !important;   
+        }
+        .botton {
+            cursor: pointer;
+            border-radius: 1em;
+            color: #fff;
+            background: linear-gradient(to right, gray, lightgrey);
+            border: 0;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            font-family: Georgia, serif;
+            margin-left: 0.3%;
+            font-size: 13px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+        }
+        .rich-tabhdr-side-cell {border-top:none;}   
+        .rich-tabhdr-side-border {background-image:none;}        
+        .tabPanel {
+           border: none !important;
+           background-color: white; 
+           }
+        .activeTab {
+            background-color: grey;    
+            background-image:none; 
+            font-size: 20px;
+            color: white;
+            border-radius: 58px 25px;
+            border: none !important;    
+            }
+        .inactiveTab {
+            background-color: lightgrey;    
+            background-image:none;
+            font-size: 14px;
+            color:black; 
+            border-radius: 58px 25px;
+            border: none !important;
+        }
+    </style>
+    
+    <apex:panelGrid width="0" cellpadding="0" cellspacing="0" bgcolor="white" columns="2"> 
+    <apex:image url="{!URLFOR($Resource.REA, 'img/logo.png')}"/>
+        <apex:panelGroup >
+            <br/>
+            <apex:outputText style="font-weight:bold; font-size:25px;" value=". Real Estate Agency"/>
+            <br/>
+        </apex:panelGroup>
+    </apex:panelGrid>
+    
+    <apex:form >
+        <apex:pageBlock >
+            <apex:commandButton styleClass="botton" value="Home" action="{!gotoHome}"/>
+            <apex:commandButton styleClass="botton" value="Real Estate Contracts" action="{!gotoRealEstateContractsList}"/>
+            <apex:commandButton styleClass="botton" value="Real Estate" action="{!gotoRealEstateList}"/>
+            <apex:commandButton styleClass="botton" value="Realtors" action="{!gotoRealtorsList}"/>
+            <apex:commandButton styleClass="botton" value="Leads" action="{!gotoLeadsList}"/>
+            <apex:commandButton styleClass="botton" value="Accounts" action="{!gotoAccountsList}"/>
+            <apex:commandButton styleClass="botton" value="Contacts" action="{!gotoContactsList}"/>
+            <apex:commandButton styleClass="botton" value="Opportunities" action="{!gotoOpportunitiesList}"/>
+            <apex:commandButton styleClass="botton" value="Real Estate Buyers" action="{!gotoRealEstateBuyersList}"/>
+        </apex:pageBlock>
+    </apex:form>
+
+    <!--apex:tabPanel contentStyle="display:none; background-image:none;" switchType="client" selectedTab="name2" id="theTabPanel" activeTabClass="activeTab" inactiveTabClass="inactiveTab">
+        <apex:tab label="Home" name="Home" id="Home" onclick="onClickHome()"></apex:tab>
+        <apex:tab label="Contracts"></apex:tab>
+        <apex:tab label="Real Estate" ></apex:tab>
+        <apex:tab label="Realtors"></apex:tab>
+        <apex:tab label="Leads"></apex:tab>
+        <apex:tab label="Accounts"></apex:tab>
+        <apex:tab label="Contacts"></apex:tab>
+        <apex:tab label="Opportunities"></apex:tab>
+        <apex:tab label="Real Estate Buyers"></apex:tab>
+    </apex:tabPanel-->
+</apex:page>

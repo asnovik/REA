@@ -1,0 +1,21 @@
+<apex:page standardController="Event" extensions="EventExtension" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA" />
+    <!--apex:detail subject="{!Event.Id}" relatedList="true" title="true"/!-->
+        <apex:form >
+        <apex:pageBlock title="New Event" id="event_new">
+            <apex:pageBlockSection columns="1">
+                    <apex:inputField value="{!Event.WhoId}"/>
+                    <apex:inputField value="{!Event.WhatId}"/>
+                    <!--apex:inputField value="{!Event.AccountId}"/!-->
+                    <!--apex:inputField value="{!Event.Subject}"/!-->
+                    <apex:inputField value="{!Event.EventSubject__c}"/>
+                    <!--apex:inputField value="{!Event.ActivityDateTime}"/!-->
+                    <apex:inputField value="{!Event.StartDateTime}"/>
+                    <apex:inputField value="{!Event.EndDateTime}"/>  
+                </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!save}"/>
+            </apex:pageBlockButtons>   
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

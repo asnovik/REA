@@ -1,0 +1,18 @@
+<apex:page standardController="RealEstateContract__c" extensions="RealEstateContractExtensionEdit" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA" />
+    <!--apex:detail subject="{!RealEstateContract__c.Id}" relatedList="true" title="true"/!-->
+        <apex:form >
+        <apex:pageBlock title="Real Estate Contract Detail" id="realEstateContract_detail">
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!RealEstateContract__c.Name}"/>
+                <apex:outputField value="{!RealEstateContract__c.DateRealEstateContract__c}"/>
+                <apex:inputField value="{!RealEstateContract__c.DateRealEstateContractClosed__c}"/>
+                <apex:outputField value="{!RealEstateContract__c.Account__c}"/>        
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveRealEstateContract}"/>
+            </apex:pageBlockButtons>  
+        </apex:pageBlock>
+    </apex:form>
+    <apex:relatedList list="Real_Estate__r" />
+</apex:page>

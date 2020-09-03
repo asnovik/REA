@@ -1,0 +1,22 @@
+<apex:page showHeader="false" title="{!$Label.site.registration_confirmation}">
+      <center>
+        <apex:panelGrid bgcolor="white" columns="1" style="align: center;"> 
+          <apex:panelGrid width="400" cellpadding="30" cellspacing="0" bgcolor="white" columns="1" style="topPanel"> 
+            <br/>
+            <apex:outputPanel layout="block" styleClass="topPanelContainer">
+              <apex:panelGrid width="500" cellpadding="10" cellspacing="0" bgcolor="white" columns="2"> 
+                <apex:image url="{!URLFOR($Resource.REA, 'img/logo.png')}"/>
+                <apex:panelGroup >
+                  <br/>
+                  <apex:outputText style="font-weight:bold; font-size:15px;" value="{!$Label.site.thank_you_for_registering}"/>
+                  <br/>
+                  <br/>
+                  <apex:outputLink value="{!$Page.SiteLoginPage}" rendered="{!$Site.LoginEnabled}">{!$Label.site.go_to_login_page}</apex:outputLink>
+                  <br/>
+                </apex:panelGroup>
+              </apex:panelGrid> 
+            </apex:outputPanel>
+          </apex:panelGrid> 
+       </apex:panelGrid>
+      </center>
+</apex:page>

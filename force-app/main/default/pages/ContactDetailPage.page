@@ -1,0 +1,23 @@
+<apex:page standardController="Contact" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA" />
+    <!--apex:detail subject="{!Contact.Id}" relatedList="true" title="true"/!-->
+        <apex:form >
+        <apex:pageBlock title="Contact Detail" id="contact_detail">
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!Contact.Name}"/>
+                <apex:outputField value="{!Contact.Account.Name}"/> 
+                <apex:outputField value="{!Contact.Phone}"/>
+                <apex:outputField value="{!Contact.Email}"/>
+            </apex:pageBlockSection>  
+        </apex:pageBlock>
+            <apex:pageBlock >
+        <apex:pageBlockTable value="{!Contact.OpenActivities}" var="a">
+            <apex:column value="{!a.TaskSubject__c}"/>
+            <apex:column value="{!a.IsTask}"/>
+            <!--apex:column value="{!a.ActivityDate}"/-->
+            <apex:column value="{!a.Status}"/>
+            <apex:column value="{!a.Priority}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page showHeader="false" title="{!$Label.site.authorization_required}" id="Unauthorized" cache="false">
+      <center>
+        <apex:panelGrid bgcolor="white" columns="1">
+          <apex:panelGrid width="400" cellpadding="30" cellspacing="0" bgcolor="white" columns="1" styleClass="topPanelContainer">
+            <br/>
+            <apex:outputPanel layout="block" styleClass="topPanel">
+              <apex:panelGrid width="600" cellpadding="0" cellspacing="0" bgcolor="white" columns="3">
+                <apex:image url="{!URLFOR($Resource.REA, 'img/logo.png')}"/>
+                <apex:panelGroup >
+                  <apex:outputText style="font-weight:bold; font-size:15px;" value="{!$Label.site.authorization_required}" />
+                  <br/>
+                  <br/>
+                  <apex:outputText value="{!$Label.site.login_or_register_first}"/>
+                  <br/>
+                  <apex:outputText value="{!$Label.site.click_forget_password}"/>
+                  <br/>
+                  <br/>
+                  <apex:panelGroup id="theLinks">
+                      <apex:panelGrid columns="2">
+                          <apex:outputLink value="{!URLFOR($Page.LoginPage)}">Forgot Your Password?</apex:outputLink>
+                          <apex:outputLink value="{!URLFOR($Page.RegisterPage)}">Registration</apex:outputLink>
+                      </apex:panelGrid>
+                  </apex:panelGroup>
+                </apex:panelGroup>
+                <apex:outputText value=""/>
+                <apex:outputText value=""/>
+                <br/>
+              </apex:panelGrid>
+            </apex:outputPanel>
+          </apex:panelGrid>
+        </apex:panelGrid>
+      </center>
+</apex:page>

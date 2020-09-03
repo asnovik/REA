@@ -1,0 +1,15 @@
+<apex:page controller="ChartController" sidebar="false" showheader="false">
+    <apex:include pageName="TemplateREA"/>
+    <apex:form id="dash">
+        <apex:pageBlock >
+            <apex:pageBlockSection columns="2">
+                <apex:chart data="{!realEstateList}" width="500" height="400">
+                    <apex:axis type="Category" position="left" fields="Name" title="Real Estate"/>
+                    <apex:axis type="Numeric" position="bottom" fields="Price__c" title="Price" />
+                    <!--apex:axis type="Category" position="right" fields="RealEstateContract__c" title="Real Estate Contract"/-->
+                    <apex:barSeries orientation="horizontal" axis="bottom" xField="Price__c" yField="Name"/>
+                </apex:chart>
+           </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
