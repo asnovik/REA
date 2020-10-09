@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:contact">
+        <h1 slot="title">Real Estate Buyers List</h1>
+        <div slot="actions">
+            <lightning-button label="New Buyer" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={realEstateBuyersList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                data={realEstateBuyersList}
+                show-row-number-column
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={realEstateBuyersList}>
+            Sorry, but buyers not found
+        </template>
+    </lightning-card> 
+</template>

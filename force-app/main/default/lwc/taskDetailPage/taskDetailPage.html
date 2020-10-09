@@ -1,0 +1,14 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:task">
+        <h1 slot="title">Task Detail</h1>
+        <div class="slds-p-around_small">
+            <lightning-record-form 
+                record-id={recordId} 
+                object-api-name={objectApiName}
+                fields={fields}
+                columns="1" 
+                mode="view" >
+            </lightning-record-form>
+        </div>
+    </lightning-card> 
+</template>

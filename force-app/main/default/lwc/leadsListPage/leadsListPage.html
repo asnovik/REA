@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:lead">
+        <h1 slot="title">Leads List</h1>
+        <div slot="actions">
+            <lightning-button label="New Lead" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={leadsList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                show-row-number-column
+                data={leadsList}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={leadsList}>
+            Sorry, but leads not found
+        </template>
+    </lightning-card> 
+</template>

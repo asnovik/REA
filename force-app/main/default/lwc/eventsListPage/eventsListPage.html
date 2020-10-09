@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:event">
+        <h1 slot="title">Events List</h1>
+        <div slot="actions">
+            <lightning-button label="New Event" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={eventsList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                data={eventsList}
+                show-row-number-column
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={eventsList}>
+            Sorry, but events not found
+        </template>
+    </lightning-card> 
+</template>

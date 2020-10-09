@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-align_absolute-center" style="height:20rem">
+    <lightning-card> 
+        <h3 slot="title">Real Estate Agency Registration</h3>
+        <p class="slds-p-horizontal_small">
+            <lightning-input class="username" label="Username" value={username} onchange={handleNameChange}></lightning-input>
+            <lightning-input class="email" label="Email" value={email} onchange={handleEmailChange}></lightning-input>
+            <lightning-input class="password" label="Password" value={password} type="password" onchange={handlePasswordChange}></lightning-input>
+            <lightning-input class="password" label="Confirm password" value={confirmPassword} type="password" onchange={handleConfirmPasswordChange}></lightning-input>
+        </p>
+        <p class="slds-p-horizontal_small slds-m-top_small"> 
+            <lightning-button class="slds-button slds-button_brand slds-button_stretch" label="Save" variant="brand" onclick={handlerClick} ></lightning-button>       
+        </p>
+    </lightning-card>
+    </div>
+</template>

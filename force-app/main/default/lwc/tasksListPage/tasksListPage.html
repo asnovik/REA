@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:task">
+        <h1 slot="title">Tasks List</h1>
+        <div slot="actions">
+            <lightning-button label="New Task" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={tasksList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                data={tasksList}
+                show-row-number-column
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={tasksList}>
+            Sorry, but tasks not found
+        </template>
+    </lightning-card> 
+</template>

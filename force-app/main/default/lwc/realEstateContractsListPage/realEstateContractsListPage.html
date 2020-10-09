@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:contract">
+        <h1 slot="title">Real Estate Contracts List</h1>
+        <div slot="actions">
+            <lightning-button label="New Contract" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={realEstateContractsList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                show-row-number-column
+                data={realEstateContractsList}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={realEstateContractsList}>
+            Sorry, but contracts not found
+        </template>
+    </lightning-card> 
+</template>

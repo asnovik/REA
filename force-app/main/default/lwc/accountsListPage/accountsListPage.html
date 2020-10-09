@@ -1,0 +1,20 @@
+<template>
+    <lightning-card variant="narrow" icon-name="standard:account">
+        <h1 slot="title">Accounts List</h1>
+        <div slot="actions">
+            <lightning-button label="New Account" slot="actions" onclick={handleClick}></lightning-button>
+        </div>
+        <template if:true={accountsList}>
+            <lightning-datatable
+                key-field="id"
+                hide-checkbox-column="true"
+                show-row-number-column
+                data={accountsList}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template if:false={accountsList}>
+            Sorry, but accounts not found
+        </template>
+    </lightning-card> 
+</template>

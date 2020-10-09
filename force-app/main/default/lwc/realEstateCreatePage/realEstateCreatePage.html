@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-3">
+            <span>
+                <lightning-card variant="narrow" icon-name="standard:contract">
+                    <h1 slot="title">New Real Estate</h1>
+                    <div class="slds-p-around_small">
+                        <lightning-record-form 
+                            object-api-name={objectApiName}
+                            fields={fields}
+                            onsuccess={handleRealEstateCreate}
+                            columns="1" >
+                        </lightning-record-form>
+                    </div>
+                </lightning-card> 
+            </span>
+        </div>
+        <div class="slds-col slds-size_1-of-3">
+            <span></span>
+        </div>
+    </div>
+</template>
